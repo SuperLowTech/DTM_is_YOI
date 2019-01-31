@@ -9,7 +9,7 @@ class SPTUNEQuestion{
 
     require_once(__DIR__ . '/data.php');
 
-    $this->array_for_json =array(
+    $this->array_for_json_qc =array(
       "question" => $questions[$array_index],
       "choiceA" => $choices[$array_index . '-A'],
       "choiceB" => $choices[$array_index . '-B'],
@@ -21,7 +21,7 @@ class SPTUNEQuestion{
 
     require_once(__DIR__ . '/data.php');
 
-    $this->array_for_json2 =array(
+    $this->array_for_json_ans =array(
       "answer" => $answer[$FS_count . '-' . $FS_flag]
     );
     echo json_encode($this->array_for_json_ans);
@@ -30,6 +30,7 @@ class SPTUNEQuestion{
 }
 
 $Class_question = new SPTUNEQuestion;
+
   if($_POST['Q_count'] < 4){
     $array_index = $_POST['Q_count'] . '-' . $_POST['FS_count'];
     $Class_question->display_Que_and_Cho($array_index,$_POST['Q_count']);
