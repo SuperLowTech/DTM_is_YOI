@@ -8,6 +8,7 @@ $(function(){
   button_status = $('#start_btn').data('status');
 
   $('#start_btn').click(function(){
+    //ajax will not run without user's choice 
     if(FS_flag === 9){
       alert('Oops!選択肢を選んでいないね？')
     }else{
@@ -32,8 +33,8 @@ $(function(){
         //receive next question
         if(Q_count <= 3){
           $('#question').html('Q' + Q_count + ':' + result.question);
-          $('#choiceA').html('<button id = "A_btn" class="btn btn-secondary" data-choice="a">A</button>' +result.choiceA);
-          $('#choiceB').html('<button id = "B_btn" class="btn btn-secondary" data-choice="b">B</button>' +result.choiceB);
+          $('#choiceA').html('<button id = "A_btn" class="btn btn-secondary btn-sm" data-choice="a">A</button>' +result.choiceA);
+          $('#choiceB').html('<button id = "B_btn" class="btn btn-secondary btn-sm" data-choice="b">B</button>' +result.choiceB);
           FS_flag = 9;
         //recieve answer any one of
         }else{
@@ -50,6 +51,11 @@ $(function(){
       }
     });
 
+    /*
+    FS_flag is used for judge answer.
+    Last answer will be caluculated by number that how many times user choice choiceB.
+    */
+     
     $('#choiceA').click(function(){
       FS_flag = 0;
     });
